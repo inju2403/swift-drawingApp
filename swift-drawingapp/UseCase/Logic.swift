@@ -8,7 +8,7 @@
 import Foundation
 
 class Logic: CreateFigureUseCase,
-              SelectFigureUseCase {
+             SelectFigureUseCase {
     
     private var presenterPort: PresenterPort?
     private var selectedId: UUID?
@@ -24,8 +24,8 @@ class Logic: CreateFigureUseCase,
         self.presenterPort = port
     }
     
-    func touchRect(_ id: UUID?) -> (selectedId: UUID?, deselectedId: UUID?) {
-        guard let id = id else { return (nil, nil) }
+    func changeFocusing(_ id: UUID?) {
+        guard let id = id else { return }
 
         if selectedId == id {
             deselectedId = id
@@ -35,6 +35,6 @@ class Logic: CreateFigureUseCase,
             selectedId = id
         }
         
-        return (selectedId, deselectedId)
+        presenterPort?.setFocusing(selectedId, deselectedId)
     }
 }

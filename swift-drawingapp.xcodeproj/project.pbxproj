@@ -159,7 +159,7 @@
 		83A846DF28725EFA00C777B1 /* swift-drawingapp */ = {
 			isa = PBXGroup;
 			children = (
-				C2137A93287DB95500EB32F8 /* Logic */,
+				C2137A9C288006E200EB32F8 /* Port */,
 				C25E12D8287C0DCA009A4564 /* UseCase */,
 				C25E12D12872F384009A4564 /* Common */,
 				C25E12CC2872D999009A4564 /* Network */,
@@ -193,12 +193,12 @@
 			path = "swift-drawingappUITests";
 			sourceTree = "<group>";
 		};
-		C2137A93287DB95500EB32F8 /* Logic */ = {
+		C2137A9C288006E200EB32F8 /* Port */ = {
 			isa = PBXGroup;
 			children = (
-				C2137A94287DB96800EB32F8 /* Logic.swift */,
+				C25E12DD287C19B4009A4564 /* PresenterPort.swift */,
 			);
-			path = Logic;
+			path = Port;
 			sourceTree = "<group>";
 		};
 		C25E12BE2872D423009A4564 /* Model */ = {
@@ -246,9 +246,9 @@
 		C25E12D8287C0DCA009A4564 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				C2137A94287DB96800EB32F8 /* Logic.swift */,
 				C25E12DF287C2D06009A4564 /* CreateFigureUseCase.swift */,
 				C25E12D9287C10FA009A4564 /* SelectFigureUseCase.swift */,
-				C25E12DD287C19B4009A4564 /* PresenterPort.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";

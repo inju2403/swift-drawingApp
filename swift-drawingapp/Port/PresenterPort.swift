@@ -8,5 +8,5 @@
 import Foundation
 
 protocol PresenterPort {
-    func touchRect(_ deselectedId: UUID?, _ selectedId: UUID?)
+    func setFocusing(_ selectedId: UUID?, _ deselectedId: UUID?)
 }

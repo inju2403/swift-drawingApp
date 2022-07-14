@@ -17,6 +17,7 @@ class DrawingViewModel {
     
     init(_ logic: Logic) {
         self.logic = logic
+        self.logic.setPresenter(with: self)
     }
     
     func createRect() {
@@ -25,8 +26,14 @@ class DrawingViewModel {
     }
     
     func touchRect(_ id: UUID?) {
-        let tuple = logic.touchRect(id)
-        selectedId = tuple.selectedId
-        deselectedId = tuple.deselectedId
+        logic.changeFocusing(id)
+    }
+}
+
+// MARK: - Port
+extension DrawingViewModel: PresenterPort {
+    func setFocusing(_ selectedId: UUID?, _ deselectedId: UUID?) {
+        self.selectedId = selectedId
+        self.deselectedId = deselectedId
     }
 }
