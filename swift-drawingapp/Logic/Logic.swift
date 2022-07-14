@@ -24,7 +24,7 @@ class Logic: CreateFigureUseCase,
         self.presenterPort = port
     }
     
-    func touchRect(_ id: UUID?) -> (UUID?, UUID?) {
+    func touchRect(_ id: UUID?) -> (selectedId: UUID?, deselectedId: UUID?) {
         guard let id = id else { return (nil, nil) }
 
         if selectedId == id {

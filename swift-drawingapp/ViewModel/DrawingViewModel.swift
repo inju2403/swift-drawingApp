@@ -25,6 +25,8 @@ class DrawingViewModel {
     }
     
     func touchRect(_ id: UUID?) {
-        (selectedId, deselectedId) = logic.touchRect(id)
+        let tuple = logic.touchRect(id)
+        selectedId = tuple.selectedId
+        deselectedId = tuple.deselectedId
     }
 }
