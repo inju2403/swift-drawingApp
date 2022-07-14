@@ -10,5 +10,5 @@ import Foundation
 protocol SelectFigureUseCase {
     func setPresenter(with port: PresenterPort?)
     
-    func touchRect(_ id: UUID?)
+    func touchRect(_ id: UUID?) -> (UUID?, UUID?)
 }

@@ -10,6 +10,8 @@ import Foundation
 class DrawingViewModel {
     @Published var rects = [Figure]()
     @Published var drawings = [Figure]()
+    @Published var selectedId: UUID?
+    @Published var deselectedId: UUID?
     
     private let logic: Logic
     
@@ -23,6 +25,6 @@ class DrawingViewModel {
     }
     
     func touchRect(_ id: UUID?) {
-        logic.touchRect(id)
+        (selectedId, deselectedId) = logic.touchRect(id)
     }
 }

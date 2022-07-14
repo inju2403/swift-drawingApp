@@ -79,7 +79,6 @@ class ViewController: UIViewController {
     
     private func setViewModel() {
         let logic = Logic()
-        logic.setPresenter(with: self)
         viewModel = DrawingViewModel(logic)
         
         viewModel?.$rects
@@ -92,6 +91,21 @@ class ViewController: UIViewController {
                 self?.views[rect.id] = rectView
                 self?.view.addSubview(rectView)
                 self?.setAccessibilityIdentifier(rectView)
+            }
+            .store(in: &subscriptions)
+        
+        // MARK: - 출력 처리
+        viewModel?.$selectedId
+            .sink { [weak self] selectedId in
+                guard let id = selectedId else { return }
+                (self?.views[id] as? RectView)?.selected()
+            }
+            .store(in: &subscriptions)
+        
+        viewModel?.$deselectedId
+            .sink { [weak self] deselectedId in
+                guard let id = deselectedId else { return }
+                (self?.views[id] as? RectView)?.deselected()
             }
             .store(in: &subscriptions)
     }
@@ -117,19 +131,6 @@ class ViewController: UIViewController {
     @objc
     private func pressSyncButton() {
         
-    }
-}
-
-// MARK: - 출력 처리
-extension ViewController: PresenterPort {
-    func touchRect(_ deselectedId: UUID?, _ selectedId: UUID?) {
-        if let deselectedId = deselectedId {
-            (self.views[deselectedId] as? RectView)?.deselected()
-        }
-        
-        if let selectedId = selectedId {
-            (self.views[selectedId] as? RectView)?.selected()
-        }
     }
 }
 
